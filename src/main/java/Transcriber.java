@@ -1,19 +1,18 @@
 public class Transcriber{
     private static String inputString;
-
     public Transcriber(String input){
-        this.inputString = input;
+        inputString = input;
     }
-
     public String getTranscription(){
         return transcribe();
     }
     private String transcribe(){
-        String str = this.inputString.toLowerCase();
+        String str = inputString.toLowerCase();
         char[] inpArr = str.toCharArray();
         StringBuilder builder = new StringBuilder();
         builder.append("\uD800\uDFD0");
 
+        //TODO: Implement regex replacements
         for(int i = 0; i < inpArr.length; i++) {
             char ch = inpArr[i];
             char next;
@@ -125,6 +124,8 @@ public class Transcriber{
         }
 
         builder.append("\n");
+
+        // Additional info provided if possible
         if (str.contains("baga")) builder.append("\nLogogram for baga: \uD800\uDFCE");
         if (str.contains("ahuramazda'") || str.contains("ahuramazdā")) builder.append("\nLogograms for Ahuramazdā: \uD800\uDFC8 / \uD800\uDFC9 / \uD800\uDFCA");
         if (str.contains("dahya'u") || str.contains("dahyāu")) builder.append("\nLogograms for dahyāu: \uD800\uDFCC / \uD800\uDFCD");

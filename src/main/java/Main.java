@@ -1,4 +1,4 @@
-import org.glassfish.jersey.jaxb.internal.XmlCollectionJaxbProvider;
+import org.glassfish.jersey.jaxb.internal.XmlCollectionJaxbProvider.App;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -59,9 +59,9 @@ public class Main extends TelegramLongPollingBot {
         Properties prop = new Properties();
         try {
             //load a properties file from class path, inside static method
-            prop.load(XmlCollectionJaxbProvider.App.class.getClassLoader().getResourceAsStream("config.properties"));
+            prop.load(App.class.getClassLoader().getResourceAsStream("config.properties"));
 
-            //get the property value and print it out
+            //get the property value
             token = prop.getProperty("token");
         } catch(IOException ex) {
             ex.printStackTrace();
@@ -106,7 +106,7 @@ public class Main extends TelegramLongPollingBot {
                     Make sure your words and numbers are correctly separated with spaces.
                     For some words you will see possible logograms under the normal transcription.""";
             case("/example"): return
-                    "\n\nθātiy Dārayavauš xšāyaθiya vašnā Ahuramazdāha adam xšāyaθiya amiy Ahuramazdāha xšaçam manā frābara";
+                    "θātiy Dārayavauš xšāyaθiya vašnā Ahuramazdāha adam xšāyaθiya amiy Ahuramazdāha xšaçam manā frābara";
         }
 
         Transcriber transcriber = new Transcriber(input);
