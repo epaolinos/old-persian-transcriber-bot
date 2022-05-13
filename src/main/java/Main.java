@@ -89,25 +89,25 @@ public class Main extends TelegramLongPollingBot {
 
     private String answer(String input) {
         switch (input) {
-            case("/start"): return
-                    "Hello. Let's transcribe your phrase into the Old Persian cuneiform." +
-                            "\nIf you just want to try it, click /example, copy the® phrase from the Behistun Inscription and send it back to the bot." +
-                            "\nTo learn some more info click /help." +
-                            "\nMade by @epaolinos (Pavel Egizaryan) in 2019.";
-            case("/help"): return
-                    "You can use digraphs instead of special characters:\n" +
-                            "\nā = a' " +
-                            "\nç = c' " +
-                            "\nθ = t' " +
-                            "\nš = s'" +
-                            "\n\nThe numbers for 200 and more are not known." +
-                            "\nMake sure your words and numbers are correctly separated with spaces." +
-                            "\nFor some words you will see possible logograms under the normal transcription.";
+            case("/start"): return """
+                   Hello. Let's transcribe your phrase into the Old Persian cuneiform.
+                   If you just want to try it, click /example, copy the phrase from the Behistun Inscription and send it back to the bot.
+                   To learn some more info click /help.
+                   Made by @epaolinos (Pavel Egizaryan) in 2019.""";
+            case("/help"): return """
+                    You can use digraphs instead of special characters:
+                    
+                    ā = a'
+                    ç = c'
+                    θ = t'
+                    š = s'
+                    
+                    The numbers for 200 and more are not known.
+                    Make sure your words and numbers are correctly separated with spaces.
+                    For some words you will see possible logograms under the normal transcription.""";
             case("/example"): return
                     "\n\nθātiy Dārayavauš xšāyaθiya vašnā Ahuramazdāha adam xšāyaθiya amiy Ahuramazdāha xšaçam manā frābara";
         }
-
-        //return "Ok";
 
         Transcriber transcriber = new Transcriber(input);
         return transcriber.getTranscription();
