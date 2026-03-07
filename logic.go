@@ -1,13 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"slices"
 	"strconv"
 	"strings"
 	"unicode"
 )
 
-// TODO: предложение логограмм
 func transcribe(input string) string {
 	var builder strings.Builder
 
@@ -59,6 +59,8 @@ func transcribe(input string) string {
 		builder.WriteString(string(char))
 	}
 
+	builder.WriteString(findLogograms(input))
+
 	return builder.String()
 }
 
@@ -88,4 +90,27 @@ func numbersProcessing(number string) string {
 	}
 
 	return result.String()
+}
+
+func findLogograms(input string) string {
+	cleanInput := strings.ToLower(input)
+	words := strings.Fields(cleanInput)
+
+	var found []string
+	seen := make(map[string]bool)
+
+	for _, word := range words {
+		normalized := strings.ReplaceAll(word, "ā", "a")
+
+		if logo, ok := logograms[normalized]; ok && !seen[normalized] {
+			found = append(found, fmt.Sprintf("• %s: %s", word, logo))
+			seen[normalized] = true
+		}
+	}
+
+	if len(found) == 0 {
+		return ""
+	}
+
+	return "\n\nPossible logograms:\n" + strings.Join(found, "\n")
 }

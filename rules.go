@@ -49,7 +49,11 @@ var contextualSigns = map[string]string{
 }
 
 var logograms = map[string]string{
-	"ahuramazda": "...",
+	"ahuramazda": "𐏈 / 𐏉 / 𐏊 (genitive)",
+	"xšayaθiya":  "𐏋",
+	"dahyauš":    "𐏌 / 𐏍",
+	"baga":       "𐏎",
+	"būmiš":      "𐏏",
 }
 
 // TODO: замены по диакритикам
