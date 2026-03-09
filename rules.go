@@ -1,10 +1,15 @@
+// Package main provides the core functionality for the Old Persian cuneiform bot.
+// This file contains the mapping rules for characters, syllables, and logograms.
 package main
 
+import "strings"
+
+// baseSigns maps individual Latin characters to their primary Old Persian cuneiform signs.
 var baseSigns = map[rune]string{
 	'a': "𐎠",
 	'ā': "𐎠",
-	'e': "𐎠",
-	'o': "𐎠𐎢",
+	'e': "𐎠",  // 'e' processed as 'a'
+	'o': "𐎠𐎢", // 'o' processed as 'au'
 	'i': "𐎡",
 	'u': "𐎢",
 
@@ -34,6 +39,8 @@ var baseSigns = map[rune]string{
 	' ': "𐏐",
 }
 
+// contextualSigns handles specific two-character combinations (syllables)
+// that have dedicated cuneiform signs, overriding the base mapping.
 var contextualSigns = map[string]string{
 	"di": "𐎮𐎡",
 	"du": "𐎯𐎢",
@@ -48,18 +55,31 @@ var contextualSigns = map[string]string{
 	"vi": "𐎻𐎡",
 }
 
+// logograms maps full words or stems to their corresponding ideograms.
 var logograms = map[string]string{
-	"ahuramazda": "𐏈 / 𐏉 / 𐏊 (genitive)",
-	"xšayaθiya":  "𐏋",
-	"dahyauš":    "𐏌 / 𐏍",
+	"Ahuramazdā": "𐏈 / 𐏉 / 𐏊 (genitive)",
+	"xšāyaθiya":  "𐏋",
+	"dahyāuš":    "𐏌 / 𐏍",
 	"baga":       "𐏎",
 	"būmiš":      "𐏏",
 }
 
-// TODO: замены по диакритикам
-var diacritics = map[string]string{
-	"a'": "ā",
-	"s'": "š",
-	"t'": "θ",
-	"c'": "ç",
-}
+// apostropheNormalizer converts user-friendly apostrophe notation
+// into proper linguistic transcription characters with diacritics.
+var apostropheNormalizer = strings.NewReplacer(
+	"a'", "ā",
+	"i'", "ī",
+	"u'", "ū",
+
+	"s'", "š",
+	"t'", "θ",
+	"c'", "ç",
+)
+
+// vowelNormalizer is used to strip length marks (macrons) from vowels
+// to simplify internal string comparisons and logogram lookups.
+var vowelNormalizer = strings.NewReplacer(
+	"ā", "a",
+	"ū", "u",
+	"ī", "i",
+)
