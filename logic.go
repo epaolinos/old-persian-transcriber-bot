@@ -132,7 +132,7 @@ func findLogograms(input string) string {
 
 	for _, word := range words {
 		// Normalize the word by removing vowel length marks (ā, ū) for comparison.
-		normalizedWord := vowelNormalizer.Replace(word)
+		normalizedWord := vowelNormalizer.Replace(strings.ToLower(word))
 
 		for base, logo := range logograms {
 			// Normalize the dictionary key (base) to match the input's format.
