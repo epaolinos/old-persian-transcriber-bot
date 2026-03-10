@@ -16,4 +16,4 @@ A specialized linguistic tool developed in Go for transcribing Latinized Old Per
 | User                       | Bot                                                                                      |
 | :------------------------- | :--------------------------------------------------------------------------------------- |
 | θātiy Dārayavauš xšāyaθiya | 𐎰𐎠𐎫𐎡𐎹𐏐𐎭𐎠𐎼𐎹𐎺𐎢𐏁𐏐𐎧𐏁𐎠𐎹𐎰𐎡𐎹<br><br>Possible logograms:<br>• xšāyaθiya: 𐏋 |
-| 148                        | 𐏕𐏔𐏔𐏒𐏒𐏒𐏒                                                                           |
+| 135                        | 𐏕𐏔𐏓𐏒𐏒𐏑                                                                           |
