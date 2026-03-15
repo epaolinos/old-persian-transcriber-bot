@@ -26,12 +26,14 @@ var baseSigns = map[rune]string{
 	'm': "𐎶",
 	'n': "𐎴",
 	'p': "𐎱",
+	'q': "𐎣", // processed as 'k'
 	'r': "𐎼",
 	's': "𐎿",
 	'š': "𐏁",
 	't': "𐎫",
 	'θ': "𐎰",
 	'v': "𐎺",
+	'w': "𐎢", // processed as 'u'
 	'x': "𐎧",
 	'y': "𐎹",
 	'z': "𐏀",
@@ -53,6 +55,7 @@ var contextualSigns = map[string]string{
 	"ru": "𐎽𐎢",
 	"tu": "𐎬𐎢",
 	"vi": "𐎻𐎡",
+	"qu": "𐎤𐎢", // processed as 'ku'
 }
 
 // logograms maps full words or stems to their corresponding ideograms.
